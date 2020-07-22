@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "635103070296",
+    "firebase_url": "https://zipzoom-c4019.firebaseio.com",
+    "project_id": "zipzoom-c4019",
+    "storage_bucket": "zipzoom-c4019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635103070296:android:292b3d9db599751976e22d",
+        "android_client_info": {
+          "package_name": "com.example.portusnav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635103070296-8098rcl7p7ar7boke3nsbj0rv6af5uen.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.portusnav",
+            "certificate_hash": "bca533b66815973bcc73fe23fef0a8349e769e9c"
+          }
+        },
+        {
+          "client_id": "635103070296-ukdh4c0sms4e8ga2n14nc2ob77rtt6vk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKwiE3nNjep2JSQ069AUC31RVA2mAgJ6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635103070296-ukdh4c0sms4e8ga2n14nc2ob77rtt6vk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
