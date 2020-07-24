@@ -11,30 +11,22 @@ public class Ticket {
     boolean carryOn;
     boolean cargo;
     int passengers;
-
-    public void Ticket(String ticket, String first, String last, String city, String when, int entry, String fgate, boolean carry, boolean storage, int group){
-        ticketnum=ticket;
-        fname=first;
-        lname=last;
-        dept=city;
-        time=when;
-        door=entry;
-        gate=fgate;
-        carry=carryOn;
-        storage=cargo;
-        passengers=group;
+    
+    // Default constructor required for calls to DataSnapshot.getValue(Post.class)
+    public Ticket(){
     }
-    public String getfName(){
-        return fname;
+    //Constructor
+    public Ticket(String ticketnum, String fname, String lname, String dept, String time, int door,
+                  String gate, boolean carryOn, boolean cargo,int passengers){
+        this.ticketnum=ticketnum;
+        this.fname=fname;
+        this.lname=lname;
+        this.dept=dept;
+        this.time=time;
+        this.door=door;
+        this.gate=gate;
+        this.carryOn=carryOn;
+        this.cargo=cargo;
+        this.passengers=passengers;
     }
-    public String getlName(){
-        return lname;
-    }
-    public String getCity(){
-        return dept;
-    }
-    public String getTime(){
-        return time;
-    }
-
 }
