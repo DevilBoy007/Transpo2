@@ -21,8 +21,7 @@ public class HomeFragment extends Fragment {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference connectedRef = database.getReference("/tickets");
-    //DatabaseReference myRef = database.getInstance().getReference("/tickets");
-
+    
     private HomeViewModel homeViewModel;
 
     public View onCreateView( LayoutInflater inflater,
