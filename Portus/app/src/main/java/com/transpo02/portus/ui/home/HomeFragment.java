@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,13 +24,10 @@ public class HomeFragment extends Fragment {
     TextView txt;
     Button btn;
     String ticNum;
-    Query query = connectedRef.collections("tickets").whereEqualTo("id", ticNum);
-
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference connectedRef = database.getReference("/tickets");
-  
-    CollectionReference ticketTable = database.collection("tickets");
     
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
+    CollectionReference connectedRef = database.collection("tickets");
+    DocumentReference docRef = database.collection("tickets").document("ticket");
     private HomeViewModel homeViewModel;
 
     public View onCreateView( LayoutInflater inflater,
@@ -39,23 +36,22 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        txt = (TextView) findViewById(R.id.editTextTextPersonName);
+        txt = (EditText) findViewById(R.id.ticketentry);
         btn = (Button) findViewById(R.id.itineraryButton);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
              ticNum = txt.getText().toString();
+             docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Ticket ticket = documentSnapshot.toObject(Ticket.class);
+                System.out.println("Hello " + ticket.fname);
+                System.out.println("You are departing from " + ticket.deptCity + " at " + ticket.deptTime);
+                System.out.println("You should arrive 45 minutes before to expedite your check-in and security screening process")
+    }
+});
             }
         });
-        Ticket createTicket = dbQuery(DataSnapshot snapshot, query);
-        System.out.println("Hello " + createTicket.fname);
-        System.out.println("You are departing from " + createTicket.dept + " at " + 
-                           createTicket.time);
-        System.out.println("You should arrive 45 minutes before to expedite your check-in and security screening process");
         return root;
     }
-    public Ticket dbQuery(DataSnapshot snap, Query query){
-        Ticket tic = query.get();
-        Ticket tic2 = snap.getChild.getValue(Ticket.class);
-        return tic;
-}
