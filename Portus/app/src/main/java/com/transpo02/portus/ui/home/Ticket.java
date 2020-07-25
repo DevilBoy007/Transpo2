@@ -1,11 +1,11 @@
 package com.example.portusnav.ui.home;
 
 public class Ticket {
-    String ticketnum;
+    String id;
     String fname;
     String lname;
-    String dept;
-    String time;
+    String deptCity;
+    String deptTime;
     int door;
     String gate;
     boolean carryOn;
@@ -16,9 +16,9 @@ public class Ticket {
     public Ticket(){
     }
     //Constructor
-    public Ticket(String ticketnum, String fname, String lname, String dept, String time, int door,
+    public Ticket(String id, String fname, String lname, String dept, String time, int door,
                   String gate, boolean carryOn, boolean cargo,int passengers){
-        this.ticketnum=ticketnum;
+        this.id=id;
         this.fname=fname;
         this.lname=lname;
         this.dept=dept;
