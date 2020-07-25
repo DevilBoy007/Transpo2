@@ -16,13 +16,13 @@ public class Ticket {
     public Ticket(){
     }
     //Constructor
-    public Ticket(String id, String fname, String lname, String dept, String time, int door,
+    public Ticket(String id, String fname, String lname, String deptCity, String deptTime, int door,
                   String gate, boolean carryOn, boolean cargo,int passengers){
         this.id=id;
         this.fname=fname;
         this.lname=lname;
-        this.dept=dept;
-        this.time=time;
+        this.deptCity=deptCity;
+        this.deptTime=deptTime;
         this.door=door;
         this.gate=gate;
         this.carryOn=carryOn;
