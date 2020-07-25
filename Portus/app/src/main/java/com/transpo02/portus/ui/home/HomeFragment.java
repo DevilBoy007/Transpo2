@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,30 +20,42 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
+    
+    TextView txt;
+    Button btn;
+    String ticNum;
+    Query query = connectedRef.collections("tickets").whereEqualTo("id", ticNum);
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference connectedRef = database.getReference("/tickets");
+  
+    CollectionReference ticketTable = database.collection("tickets");
     
     private HomeViewModel homeViewModel;
 
     public View onCreateView( LayoutInflater inflater,
                               ViewGroup container, Bundle savedInstanceState) {
-        connectedRef.addValueEventListener(new ValueEventListener() {
-            
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Ticket ticket = dataSnapshot.getValue(Ticket.class);
-                System.out.println("Hello "+ticket.fname+", in order to make your flight at "+ticket.time+" from "+ticket.dept+", you should arrive 45 minutes before boarding");
-            }
-            
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Log.w(getTag(), "Listener was cancelled");
-            }
-        });
+
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        txt = (TextView) findViewById(R.id.editTextTextPersonName);
+        btn = (Button) findViewById(R.id.itineraryButton);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+             ticNum = txt.getText().toString();
+            }
+        });
+        Ticket createTicket = dbQuery(DataSnapshot snapshot, query);
+        System.out.println("Hello " + createTicket.fname);
+        System.out.println("You are departing from " + createTicket.dept + " at " + 
+                           createTicket.time);
+        System.out.println("You should arrive 45 minutes before to expedite your check-in and security screening process");
         return root;
     }
+    public Ticket dbQuery(DataSnapshot snap, Query query){
+        Ticket tic = query.get();
+        Ticket tic2 = snap.getChild.getValue(Ticket.class);
+        return tic;
 }
