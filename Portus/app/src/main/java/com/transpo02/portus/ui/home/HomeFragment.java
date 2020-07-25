@@ -26,7 +26,6 @@ public class HomeFragment extends Fragment {
     String ticNum;
     
     FirebaseFirestore database = FirebaseFirestore.getInstance();
-    CollectionReference connectedRef = database.collection("tickets");
     DocumentReference docRef = database.collection("tickets").document("ticket");
     private HomeViewModel homeViewModel;
 
